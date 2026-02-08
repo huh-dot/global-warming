@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+width: 100%;
+height: 40%;
+background: red;
+border-radius: 0 0 27px 27px;
+transition: height 0.5s;
+}
+
+
+input[type=range] {
+width: 100%;
+}
+
+
+footer {
+text-align: center;
+padding: 20px;
+background: #08141a;
+font-size: 14px;
+}
+</style>
+</head>
+<body>
+
+
+<header>
+<h1>Глобальное потепление</h1>
+<p>Будущее планеты зависит от нас</p>
+</header>
+
+
+<section>
+<h2>🌍 Земля: до и после</h2>
+
+
+<div class="toggle">
+<button class="good" onclick="setMode('good')">Если действовать</button>
+<button class="bad" onclick="setMode('bad')">Если ничего не делать</button>
+</div>
+
+
+<div class="card" id="modeText">
+Нажми кнопку, чтобы увидеть будущее
+</div>
+</section>
+
+
+<section>
+<h2>🌡 Температура планеты</h2>
+
+
+<div class="thermometer">
+<div class="temp" id="temp"></div>
+</div>
+
+
+<p style="text-align:center">Повышение температуры: <span id="value">1.5</span>°C</p>
+
+
+<input type="range" min="1" max="4" step="0.5" value="1.5" oninput="changeTemp(this.value)">
+
+
+<div class="card" id="tempText">
+Уже сейчас происходят пожары и засухи
+</div>
+</section>
+
+
+<footer>
+Сделано для школьного проекта 💚
+</footer>
+
+
+<script>
+function setMode(mode) {
+const text = document.getElementById('modeText');
+if (mode === 'good') {
+text.innerHTML = '🌱 Чистая энергия, сохранение природы и безопасное будущее.';
+} else {
+text.innerHTML = '🔥 Наводнения, жара, исчезновение животных и кризисы.';
+}
+}
+
+
+function changeTemp(value) {
+document.getElementById('value').innerText = value;
+document.getElementById('temp').style.height = (value / 4 * 100) + '%';
+
+
+const text = document.getElementById('tempText');
+if (value <= 1.5) text.innerText = 'Климат уже меняется.';
+else if (value <= 2) text.innerText = 'Таяние ледников и рост океана.';
+else if (value <= 3) text.innerText = 'Экстремальная жара и катастрофы.';
+else text.innerText = 'Опасная зона для жизни людей.';
+}
+</script>
+
+
+</body>
+</html>
